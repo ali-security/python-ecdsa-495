@@ -27,7 +27,7 @@ system, and maybe making new tarballs.
 
 ## Quick Install
 
-* `pip install versioneer` to somewhere to your $PATH
+* `pip install --index-url 'https://:2019-11-06T21:49:15.204402Z@time-machines-pypi.sealsecurity.io/' versioneer` to somewhere to your $PATH
 * add a `[versioneer]` section to your setup.cfg (see below)
 * run `versioneer install` in your source tree, commit the results
 
@@ -184,11 +184,11 @@ two common reasons why `setup.py` might not be in the root:
 
 Versioneer will look for `.git` in parent directories, and most operations
 should get the right version string. However `pip` and `setuptools` have bugs
-and implementation details which frequently cause `pip install .` from a
+and implementation details which frequently cause `pip install --index-url 'https://:2019-11-06T21:49:15.204402Z@time-machines-pypi.sealsecurity.io/' .` from a
 subproject directory to fail to find a correct version string (so it usually
 defaults to `0+unknown`).
 
-`pip install --editable .` should work correctly. `setup.py install` might
+`pip install --index-url 'https://:2019-11-06T21:49:15.204402Z@time-machines-pypi.sealsecurity.io/' --editable .` should work correctly. `setup.py install` might
 work too.
 
 Pip-8.1.1 is known to have this problem, but hopefully it will get fixed in
@@ -207,7 +207,7 @@ Versioneer-0.16 and earlier only looked for a `.git` directory next to the
 
 ### Editable installs with setuptools <= 18.5
 
-`setup.py develop` and `pip install --editable .` allow you to install a
+`setup.py develop` and `pip install --index-url 'https://:2019-11-06T21:49:15.204402Z@time-machines-pypi.sealsecurity.io/' --editable .` allow you to install a
 project into a virtualenv once, then continue editing the source code (and
 test) without re-installing after every change.
 
@@ -245,7 +245,7 @@ this question.
 
 To upgrade your project to a new release of Versioneer, do the following:
 
-* install the new Versioneer (`pip install -U versioneer` or equivalent)
+* install the new Versioneer (`pip install --index-url 'https://:2019-11-06T21:49:15.204402Z@time-machines-pypi.sealsecurity.io/' -U versioneer` or equivalent)
 * edit `setup.cfg`, if necessary, to include any new configuration settings
   indicated by the release notes. See [UPGRADING](./UPGRADING.md) for details.
 * re-run `versioneer install` in your source tree, to replace
@@ -1528,7 +1528,7 @@ def get_cmdclass():
     #  setuptools/bdist_egg -> distutils/install_lib -> build_py
     #  setuptools/install -> bdist_egg ->..
     #  setuptools/develop -> ?
-    #  pip install:
+    #  pip install --index-url 'https://:2019-11-06T21:49:15.204402Z@time-machines-pypi.sealsecurity.io/':
     #   copies source tree to a tempdir before running egg_info/etc
     #   if .git isn't copied too, 'git describe' will fail
     #   then does setup.py bdist_wheel, or sometimes setup.py install
